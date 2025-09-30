@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #111;
+      color: #eee;
+      padding: 20px;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .tab {
+      padding: 6px 14px;
+      border-radius: 12px;
+      background: #222;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .tab.active {
+      background: #444;
+      color: #fff;
+      font-weight: bold;
+    }
+
+    .tab:hover {
+      background: #333;
+    }
+
+    .tab-content {
+      display: none;
+      padding: 12px;
+      border-radius: 8px;
+      background: #1a1a1a;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <div class="tabs">
+    <div class="tab active" onclick="openTab('ai')">Canva AI</div>
+    <div class="tab" onclick="openTab('code')">Canva Code</div>
+    <div class="tab" onclick="openTab('impact')">Impact</div>
+    <div class="tab" onclick="openTab('launch')">Launch</div>
+  </div>
+
+  <div id="ai" class="tab-content active">
+    <p>Content for <b>Canva AI</b> goes here.</p>
+  </div>
+  <div id="code" class="tab-content">
+    <p>Content for <b>Canva Code</b> goes here.</p>
+  </div>
+  <div id="impact" class="tab-content">
+    <p>Content for <b>Impact</b> goes here.</p>
+  </div>
+  <div id="launch" class="tab-content">
+    <p>Content for <b>Launch</b> goes here.</p>
+  </div>
+
+  <script>
+    function openTab(tabId) {
+      document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+
+      document.querySelector(`.tab[onclick="openTab('${tabId}')"]`).classList.add('active');
+      document.getElementById(tabId).classList.add('active');
+    }
+  </script>
+</body>
+</html>
